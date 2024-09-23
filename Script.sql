@@ -1,46 +1,46 @@
 CREATE TABLE IF NOT EXISTS Artist (
 	id SERIAL PRIMARY KEY, 
-	name VARCHAR (100) NOT null
+	name VARCHAR (100) NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS Ganre (
 	id SERIAL PRIMARY KEY, 
-	name VARCHAR (100) NOT null
+	name VARCHAR (100) NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS Album (
 	id SERIAL PRIMARY KEY, 
 	name VARCHAR (100) NOT NULL, 
-	year_of_release DATE NOT null
+	year_of_release DATE NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS Track (
 	id SERIAL PRIMARY KEY, 
 	name VARCHAR (100) NOT NULL, 
-	duration INTEGER not null,
+	duration INTEGER NOT NULL,
 	album_id INTEGER NOT NULL REFERENCES Album(id)
 );
 
 CREATE TABLE IF NOT EXISTS Collection (
-	id SERIAL PRIMARY key,
+	id SERIAL PRIMARY KEY,
 	name VARCHAR (100) NOT NULL, 
-	year_of_release DATE NOT null
+	year_of_release DATE NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS ArtistGenre (
-	id SERIAL PRIMARY key,
+	id SERIAL PRIMARY KEY,
 	artist_id INTEGER NOT NULL REFERENCES Artist(id),
 	ganre_id INTEGER NOT NULL REFERENCES  Ganre(id)
 );
 
 CREATE TABLE IF NOT EXISTS ArtistAlbum (
-	id SERIAL PRIMARY key,
+	id SERIAL PRIMARY KEY,
 	artist_id INTEGER NOT NULL REFERENCES Artist(id),
 	album_id INTEGER NOT NULL REFERENCES  Album(id)
 );
 
 CREATE TABLE IF NOT EXISTS TrackCollection (
-	id SERIAL PRIMARY key,
+	id SERIAL PRIMARY KEY,
 	track_id INTEGER NOT NULL REFERENCES Track(id),
 	collection_id INTEGER NOT NULL REFERENCES  Collection(id)
 );
